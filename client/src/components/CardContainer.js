@@ -4,7 +4,7 @@ import Card from "./Card"
 function CardContainer({cards}) {
     
     return (
-        <div className="card-containerx">
+        <div className="card-container1">
             {cards.map((card) => (
                 <Card 
                     key={card.id}
