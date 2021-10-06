@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Card from "./components/Card"
+import CardContainer from "./components/CardContainer"
 
 function App() {
   const [count, setCount] = useState(0);
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/study">
             <h1>Study Session</h1>
             <Card/>
+            <CardContainer/>
           </Route>
 
           <Route exact path="/quiz">
