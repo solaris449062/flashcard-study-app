@@ -2,7 +2,12 @@ import React from "react"
 
 function Card() {
 
-    return <h1>This is Card</h1>
+    return (
+    <> 
+        <h1 className="CardTitle">Title</h1>
+        <input type="text"></input>
+    </>
+    )
 }
 
 export default Card
