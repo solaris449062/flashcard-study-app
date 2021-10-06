@@ -7,6 +7,7 @@ import CardContainer from "./components/CardContainer"
 
 function App() {
   const [count, setCount] = useState(0);
+  const [cards, setCards] = useState([])
 
   useEffect(() => {
     fetch("/hello")
@@ -14,15 +15,27 @@ function App() {
       .then((data) => setCount(data.count));
   }, []);
 
+  useEffect(() => {
+    fetch("/cards")
+      .then((res) => res.json())
+      .then(data => setCards(data))
+  }, [])
+
   return (
     <BrowserRouter>
       <div className="App">
         <nav>
-          <NavLink activeClassName="active-nav-link" exact to="study">
+          <NavLink 
+            activeClassName="active-nav-link" 
+            className="study-route" 
+            exact to="study">
             Study
           </NavLink>
 
-          <NavLink activeClassName="active-nav-link" exact to="quiz">
+          <NavLink 
+            activeClassName="active-nav-link" 
+            className="quiz-route"
+            exact to="quiz">
             Quiz
           </NavLink>
         </nav>
@@ -34,8 +47,8 @@ function App() {
 
           <Route exact path="/study">
             <h1>Study Session</h1>
-            <Card/>
-            <CardContainer/>
+            {/* <Card/> */}
+            {cards ? <CardContainer cards={cards}/> : null}
           </Route>
 
           <Route exact path="/quiz">
