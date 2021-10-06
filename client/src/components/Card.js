@@ -1,6 +1,13 @@
 import React from "react"
+import { useState, useEffect } from "react";
 
 function Card({card}) {
+
+    const [cardContent, setCardContent] = useState(card.content)
+
+    function handleContentChange(event) {
+        setCardContent(event.target.value);
+    }
 
     return (
     <div className="card-container2"> 
@@ -9,7 +16,8 @@ function Card({card}) {
         <p className="card-content">{card.content}</p>
         <h3 className="card-studied">{card.studied ? "studied": "not studied"}</h3>
         <h3 className="card-mastered">{card.mastered ? "studied": "not mastered"}</h3>
-        <input type="text"></input>
+        <input className="input-content" type="text" value={cardContent} onChange={handleContentChange}/>
+        <button className="save-button">Save</button>
     </div>
     )
 }
