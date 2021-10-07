@@ -45,9 +45,8 @@ function Login({ onLogin, user, onLogout }) {
                 id="password"
                 placeholder=" Password"
                 />
-                <Link exact to='/study'>
-                    <button className="login-button" type="submit">Login</button>
-                </Link>
+                <button className="login-button" type="submit">Login</button>
+               
             </form>
             <div>
             {user ? (
