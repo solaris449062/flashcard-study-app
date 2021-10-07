@@ -1,7 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react";
 
-function Card({card}) {
+function Card({card, handleContainerCardClick}) {
 
     const [cardContent, setCardContent] = useState(card.content)
 
@@ -10,7 +10,7 @@ function Card({card}) {
     }
 
     return (
-    <div className="card-container2"> 
+    <div className="card" onClick={() => handleContainerCardClick(card.id)}> 
         <h1 className="card-title">{card.title}</h1>
         <h2 className="card-subject">{card.subject}</h2>
         <p className="card-content">{card.content}</p>

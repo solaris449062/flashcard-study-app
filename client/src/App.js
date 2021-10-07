@@ -17,8 +17,20 @@ function App() {
   // const [cardMastered, setCardMastered] = useState(cardOnDisplay.mastered)
 
 
+  function handleTitleChange(event) {
+    setCardOnDisplay({...cardOnDisplay, title: event.target.value });
+  }
+
+  function handleSubjectChange(event) {
+    setCardOnDisplay({...cardOnDisplay, subject: event.target.value });
+  }
+
   function handleContentChange(event) {
-    setCardOnDisplay({...cardOnDisplay, content: event.target.value});
+    setCardOnDisplay({...cardOnDisplay, content: event.target.value });
+  }
+
+  function handleContainerCardClick(id) {
+    setCardOnDisplay(cards.find(card => card.id === id))
   }
 
   function handleSaveContent(id) {
@@ -91,9 +103,11 @@ function App() {
                         studied={cardOnDisplay.studied}
                         mastered={cardOnDisplay.mastered}
                         handleSaveContent={handleSaveContent}
+                        handleTitleChange={handleTitleChange}
+                        handleSubjectChange={handleSubjectChange}
                         handleContentChange={handleContentChange}
                         /> : null}
-            {cards ? <CardContainer cards={cards}/> : null}
+            {cards ? <CardContainer cards={cards} handleContainerCardClick={handleContainerCardClick}/> : null}
           </Route>
 
           <Route exact path="/quiz">
