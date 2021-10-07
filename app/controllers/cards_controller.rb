@@ -32,7 +32,7 @@ class CardsController < ApplicationController
     private
 
     def card_params
-        params.permit(:title, :subject, :content, :studied, :mastered, :id, :card)
+        params.permit(:title, :subject, :content, :studied, :mastered, :user, :id, :card)
     end
 
 end

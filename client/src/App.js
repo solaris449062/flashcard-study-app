@@ -7,19 +7,18 @@ import CardContainer from "./components/CardContainer"
 
 function App() {
   const [count, setCount] = useState(0);
-  const [cards, setCards] = useState([])
-
-  const card = cards ? cards[0] : null;
-  const [cardID, setCardID] = useState(card.id)
-  const [cardTitle, setTitle] = useState(card.title)
-  const [cardSubject, setCardSubject] = useState(card.subject)
-  const [cardContent, setCardContent] = useState(card.content)
-  const [cardStudied, setCardStudied] = useState(card.studied)
-  const [cardMastered, setCardMastered] = useState(card.mastered)
+  const [cards, setCards] = useState([]);
+  const [cardOnDisplay, setCardOnDisplay] = useState([])
+  // const [cardID, setCardID] = useState(cardOnDisplay.id)
+  // const [cardTitle, setTitle] = useState(cardOnDisplay.title)
+  // const [cardSubject, setCardSubject] = useState(cardOnDisplay.subject)
+  // const [cardContent, setCardContent] = useState(cardOnDisplay.content)
+  // const [cardStudied, setCardStudied] = useState(cardOnDisplay.studied)
+  // const [cardMastered, setCardMastered] = useState(cardOnDisplay.mastered)
 
 
   function handleContentChange(event) {
-      setCardContent(event.target.value);
+    setCardOnDisplay({...cardOnDisplay, content: event.target.value});
   }
 
   function handleSaveContent(id) {
@@ -28,17 +27,16 @@ function App() {
           headers: {
               'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-              // title: cardTitle,
-              // subject: cardSubject,
-              content: cardContent
-              // studied: cardStudied,
-              // mastered: cardMastered
-               }),
+          body: JSON.stringify(cardOnDisplay),
           })
           .then(response => response.json())
-          .then(data => {
-          console.log('Success:', data);
+          .then(updatedCard => {
+            console.log(updatedCard)
+            let unUpdatedCards = cards.filter(card => card.id !== id);
+            let updatedCards = [updatedCard, ...unUpdatedCards];
+            setCards(updatedCards)
+            // console.log(updatedCard)
+            // setCards(...updatedCard);
       });
   }
 
@@ -51,9 +49,10 @@ function App() {
   useEffect(() => {
     fetch("/cards")
       .then((res) => res.json())
-      .then(data => {
-        setCards(data)
-        console.log(data)
+      .then(cards => {
+        setCards(cards)
+        setCardOnDisplay(cards[0])
+        console.log(cards)
       })
 
   }, [])
@@ -84,13 +83,13 @@ function App() {
 
           <Route exact path="/study">
             <h1>Study Session</h1>
-            {cards ? <CardDisplay 
-                        id={cardID}
-                        title={cardTitle}
-                        subject={cardSubject}
-                        content={cardContent}
-                        studied={cardStudied}
-                        mastered={cardMastered}
+            {cardOnDisplay ? <CardDisplay 
+                        id={cardOnDisplay.id}
+                        title={cardOnDisplay.title}
+                        subject={cardOnDisplay.subject}
+                        content={cardOnDisplay.content}
+                        studied={cardOnDisplay.studied}
+                        mastered={cardOnDisplay.mastered}
                         handleSaveContent={handleSaveContent}
                         handleContentChange={handleContentChange}
                         /> : null}
