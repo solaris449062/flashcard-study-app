@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { useState, useEffect } from "react";
 
 function CardDisplay({id, title, subject, content, studied, mastered, handleSaveContent, handleContentChange, handleSubjectChange, handleTitleChange}) {
