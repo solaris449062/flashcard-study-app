@@ -85,13 +85,17 @@ function App() {
   useEffect(() => {
     fetch("/cards")
       .then((res) => res.json())
-      .then(cards => {
-        setCards(cards)
+      .then(cardsData => {
+        if (user) {
+          let userCards = cardsData.filter(card => card.user_id === user.id)
+          setCards(userCards)
+        }
         setCardOnDisplay(cards[0])
+
         console.log(cards)
       })
 
-  }, [])
+  }, [user])
 
   return (
     <BrowserRouter>
