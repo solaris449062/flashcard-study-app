@@ -41,7 +41,7 @@ function Login({ onLogin, user, onLogout }) {
             {user ? (
                 <div>
                     <p>Welcome, {user.username}!</p>
-                    <button onClick={handleLogout}>Logout</button>
+                    {/* <button onClick={handleLogout}>Logout</button> */}
                     <Link exact to='/study'>Get to studying!</Link>
                 </div>
             ) : (

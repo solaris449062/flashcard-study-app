@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { BrowserRouter, Switch, Route, NavLink, withRouter } from "react-router-dom";
 import Card from "./components/Card"
 import CardDisplay from "./components/CardDisplay"
@@ -9,6 +9,8 @@ import Login from "./components/Login"
 import NavBar from "./components/NavBar"
 import Quiz from "./components/Quiz"
 import Study from "./components/Study"
+
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -93,7 +95,19 @@ function App() {
 
   return (
     <BrowserRouter>
+
+      
+
       <div className="App">
+        
+
+        <Route exact path="/login">
+          <Login 
+            user={user} 
+            onLogout={handleLogout}
+            onLogin={handleLogin} 
+          />
+        </Route>
         {/* <Route exact path="/login">
           <Login 
             user={user} 
@@ -101,8 +115,8 @@ function App() {
             onLogin={handleLogin} 
           />
         </Route> */}
-
-        <Header user={user} onLogout={handleLogout}/>
+       
+        {/* <Header user={user} onLogout={handleLogout}/> */}
         {/* <nav>
           <NavLink 
             activeClassName="active-nav-link" 
@@ -129,13 +143,7 @@ function App() {
             <h1>Flashspace</h1>
           </Route>
 
-          <Route exact path="/login">
-          <Login 
-            user={user} 
-            onLogout={handleLogout}
-            onLogin={handleLogin} 
-          />
-        </Route>
+          
 
           <Route exact path="/study">
             <Study
@@ -146,6 +154,8 @@ function App() {
               handleContentChange={handleContentChange}
               cards={cards}
               handleContainerCardClick={handleContainerCardClick}
+              user={user} 
+              onLogout={handleLogout}
             />
             
             {/* <NavBar/>
@@ -166,11 +176,14 @@ function App() {
           </Route>
 
           <Route exact path="/quiz">
-
-            <Quiz/>
+            <Quiz
+              user={user} 
+              onLogout={handleLogout}
+            />
           </Route>
 
         </Switch>
+       
       </div>
     </BrowserRouter>
   );

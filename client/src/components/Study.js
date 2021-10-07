@@ -5,11 +5,11 @@ import NavBar from "./NavBar"
 import Header from "./Header";
 
 
-function Study({cardOnDisplay, handleSaveContent, handleTitleChange, handleSubjectChange, handleContentChange, cards, handleContainerCardClick}) {
+function Study({cardOnDisplay, handleSaveContent, handleTitleChange, handleSubjectChange, handleContentChange, cards, handleContainerCardClick, user, onLogout}) {
     
     return (
         <div>
-            {/* <Header user={user} onLogout={handleLogout}/> */}
+            <Header user={user} onLogout={onLogout}/>
             <NavBar/>
             <h1>Study Session</h1>
             {cardOnDisplay ? <CardDisplay 
