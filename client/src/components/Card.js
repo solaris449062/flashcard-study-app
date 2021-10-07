@@ -16,8 +16,6 @@ function Card({card}) {
         <p className="card-content">{card.content}</p>
         <h3 className="card-studied">{card.studied ? "studied": "not studied"}</h3>
         <h3 className="card-mastered">{card.mastered ? "studied": "not mastered"}</h3>
-        <input className="input-content" type="text" value={cardContent} onChange={handleContentChange}/>
-        <button className="save-button">Save</button>
     </div>
     )
 }
