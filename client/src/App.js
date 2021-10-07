@@ -1,13 +1,46 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Card from "./components/Card"
+import CardDisplay from "./components/CardDisplay"
 import CardContainer from "./components/CardContainer"
 
 function App() {
   const [count, setCount] = useState(0);
   const [cards, setCards] = useState([])
+
+  const card = cards ? cards[0] : null;
+  const [cardID, setCardID] = useState(card.id)
+  const [cardTitle, setTitle] = useState(card.title)
+  const [cardSubject, setCardSubject] = useState(card.subject)
+  const [cardContent, setCardContent] = useState(card.content)
+  const [cardStudied, setCardStudied] = useState(card.studied)
+  const [cardMastered, setCardMastered] = useState(card.mastered)
+
+
+  function handleContentChange(event) {
+      setCardContent(event.target.value);
+  }
+
+  function handleSaveContent(id) {
+      fetch(`/cards/${id}`, {
+          method: 'PATCH',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              // title: cardTitle,
+              // subject: cardSubject,
+              content: cardContent
+              // studied: cardStudied,
+              // mastered: cardMastered
+               }),
+          })
+          .then(response => response.json())
+          .then(data => {
+          console.log('Success:', data);
+      });
+  }
 
   useEffect(() => {
     fetch("/hello")
@@ -18,7 +51,11 @@ function App() {
   useEffect(() => {
     fetch("/cards")
       .then((res) => res.json())
-      .then(data => setCards(data))
+      .then(data => {
+        setCards(data)
+        console.log(data)
+      })
+
   }, [])
 
   return (
@@ -47,7 +84,16 @@ function App() {
 
           <Route exact path="/study">
             <h1>Study Session</h1>
-            {/* <Card/> */}
+            {cards ? <CardDisplay 
+                        id={cardID}
+                        title={cardTitle}
+                        subject={cardSubject}
+                        content={cardContent}
+                        studied={cardStudied}
+                        mastered={cardMastered}
+                        handleSaveContent={handleSaveContent}
+                        handleContentChange={handleContentChange}
+                        /> : null}
             {cards ? <CardContainer cards={cards}/> : null}
           </Route>
 
