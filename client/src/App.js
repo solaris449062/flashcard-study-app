@@ -1,11 +1,17 @@
 import ReactDOM from "react-dom";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Switch, Route, NavLink, withRouter } from "react-router-dom";
 import Card from "./components/Card"
 import CardDisplay from "./components/CardDisplay"
 import CardContainer from "./components/CardContainer"
+import Header from "./components/Header"
+import Login from "./components/Login"
+import NavBar from "./components/NavBar"
+import Quiz from "./components/Quiz"
+import Study from "./components/Study"
 
 function App() {
+  const [user, setUser] = useState(null);
   const [count, setCount] = useState(0);
   const [cards, setCards] = useState([]);
   const [cardOnDisplay, setCardOnDisplay] = useState([])
@@ -31,6 +37,22 @@ function App() {
 
   function handleContainerCardClick(id) {
     setCardOnDisplay(cards.find(card => card.id === id))
+  }
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  function handleLogin(user) {
+    setUser(user);
+  }
+
+  function handleLogout() {
+    setUser(null);
   }
 
   function handleSaveContent(id) {
@@ -72,7 +94,16 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <nav>
+        {/* <Route exact path="/login">
+          <Login 
+            user={user} 
+            onLogout={handleLogout}
+            onLogin={handleLogin} 
+          />
+        </Route> */}
+
+        <Header user={user} onLogout={handleLogout}/>
+        {/* <nav>
           <NavLink 
             activeClassName="active-nav-link" 
             className="study-route" 
@@ -86,14 +117,38 @@ function App() {
             exact to="quiz">
             Quiz
           </NavLink>
-        </nav>
+        </nav> */}
         <Switch>
 
+
+          {/* <Route exact path="/login">
+            <Login onLogin={handleLogin} />
+          </Route> */}
+
           <Route exact path="/">
-            <h1>Page Count: {count}</h1>
+            <h1>Flashspace</h1>
           </Route>
 
+          <Route exact path="/login">
+          <Login 
+            user={user} 
+            onLogout={handleLogout}
+            onLogin={handleLogin} 
+          />
+        </Route>
+
           <Route exact path="/study">
+            <Study
+              cardOnDisplay={cardOnDisplay}
+              handleSaveContent={handleSaveContent}
+              handleTitleChange={handleTitleChange}
+              handleSubjectChange={handleSubjectChange}
+              handleContentChange={handleContentChange}
+              cards={cards}
+              handleContainerCardClick={handleContainerCardClick}
+            />
+            
+            {/* <NavBar/>
             <h1>Study Session</h1>
             {cardOnDisplay ? <CardDisplay 
                         id={cardOnDisplay.id}
@@ -107,11 +162,12 @@ function App() {
                         handleSubjectChange={handleSubjectChange}
                         handleContentChange={handleContentChange}
                         /> : null}
-            {cards ? <CardContainer cards={cards} handleContainerCardClick={handleContainerCardClick}/> : null}
+            {cards ? <CardContainer cards={cards} handleContainerCardClick={handleContainerCardClick}/> : null} */}
           </Route>
 
           <Route exact path="/quiz">
-            <h1>Quiz Session</h1>
+
+            <Quiz/>
           </Route>
 
         </Switch>
