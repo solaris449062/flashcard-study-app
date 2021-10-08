@@ -32,8 +32,8 @@ code {
   flex-direction: column;
   align-items: center;
   /* padding: 60px; */
-  margin-top: 60px;
-  margin-bottom: 50px;
+  margin-top: 40px;
+  margin-bottom: 300px;
   margin-left: 300px;
   margin-right: 300px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -52,6 +52,9 @@ code {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition-timing-function: ease-out;
+  transition: 5.25s;
+  transform: translateY(0);
 }
 
 .login-button {
@@ -109,10 +112,12 @@ code {
   border-radius: 4px;
 }
 
+
 /* NavBar */
 
 .nav-container {
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid lightgrey; */
+  background-color: rgb(220, 241, 239);
 }
 
 .nav-bar {
@@ -135,22 +140,34 @@ code {
 }
 
 
-
-
-
-
-
 /* /study */
 
 .study-heading-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
 
 }
 
 .study-heading {
- 
+  margin-bottom: 0;
+}
+
+.create-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.create-button {
+  height: 38px;
+  width: 168px;
+  font-size: 15px;
+  background-color: rgb(8, 116, 240);
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .input-labels {
@@ -169,18 +186,28 @@ code {
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 280px;
+  margin-top: 30px;
 }
 
 .card {
-  width: 50%;
+  width: 75%;
+  height: 225px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   margin-top: 40px;
-  padding: 10px 5px;
-  border: 1px solid white;
+  border: 1px solid lightgrey;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card-details-contn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
 }
 
 .card-display-container {
@@ -197,8 +224,23 @@ code {
   align-items: center;
   margin-top: 20px;
   padding: 10px 5px;
-  border: 1px solid white;
+  border: 1px solid lightgrey;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.trash-container {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+}
+
+.trash-button {
+  margin-top: 0;
+  margin-right: 10px;
+  background-color: rgb(243, 101, 101);
+  border: 1px solid white;
+  color: white;
 }
 
 .card-title {
@@ -209,14 +251,16 @@ code {
 }
 
 .input-title {
-  text-align: center;
+  text-align: left;
   font-size: 10px;
   margin: 0;
   padding: 0;
   resize: none;
-  border: 1px solid lightgrey;
-  width: 500px;
-  height: 30px;
+  border: 1px solid white;
+  border-bottom: 1px solid grey;
+  width: 90.5%;
+  height: 20px;
+  margin-top: 20px;
 }
 
 .card-subject {
@@ -224,16 +268,18 @@ code {
 }
 
 .input-subject {
-  text-align: center;
-  font-size: 8px;
+  text-align: left;
+  font-size: 10px;
   resize: none;
-  border: 1px solid lightgrey;
-  width: 500px;
-  height: 30px;
+  border: 1px solid white;
+  border-bottom: 1px solid grey;
+  width: 90%;
+  height: 20px;
 }
 
 .card-content {
   font-size: 6px;
+  margin-bottom: 15px;
 }
 
 .card-studied {
@@ -247,15 +293,16 @@ code {
 .input-content {
   font-size: 80%;
   width: 80%;
-  height: 100px;
-  text-align: center;
+  height: 150px;
+  text-align: left;
   resize: none;
-  border: 1px solid lightgrey;
-  width: 500px;
+  border: 1px solid white;
+  border-bottom: 1px solid grey;
+  width: 90%;
 }
 
 .save-button {
-  height: 30px;
+  height: 45px;
   width: 80px;
   font-size: 15px;
   background-color: rgb(8, 116, 240);
@@ -263,5 +310,19 @@ code {
   border: 1px solid white;
   border-radius: 4px;
   margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.ph-container {
+  display: flex;
+  justify-content: left;
+  width: 90%;
+  
+}
+
+.place-holder {
+  margin-top: 2px;
+  font-size: 7px;
+  color: grey
 }
 

@@ -1,7 +1,7 @@
 import React from "react"
 import Card from "./Card"
 
-function CardContainer({cards, handleContainerCardClick}) {
+function CardContainer({cards, handleContainerCardClick, handleCardDelete}) {
     
     return (
         <div className="card-container">
@@ -10,6 +10,7 @@ function CardContainer({cards, handleContainerCardClick}) {
                     key={card.id}
                     card={card}
                     handleContainerCardClick={handleContainerCardClick}
+                    handleCardDelete={handleCardDelete}
                 />
             ))}
         </div>
