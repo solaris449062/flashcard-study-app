@@ -3,7 +3,11 @@ import React from "react";
 function GenerateQuizButton({ handleGenerateQuizButton }) {
 
     return (
-        <button className="new-button" onClick={handleGenerateQuizButton}>Generate New Quiz</button>
+        <div className="create-button-container">
+            <button className="create-button" onClick={handleGenerateQuizButton}>Generate New Quiz</button>
+        </div>
+        
+        
     )
 }
 
