@@ -3,7 +3,9 @@ import React from "react";
 function NewCardButton({ handleNewCardButton }) {
 
     return (
-        <button className="new-button" onClick={handleNewCardButton}>Create New Card</button>
+        <div className="create-button-container">
+            <button className="create-button" onClick={handleNewCardButton}>Create New Card</button>        
+        </div>
     )
 }
 

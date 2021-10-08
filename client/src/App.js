@@ -127,6 +127,16 @@ function App() {
 
   }, [user])
 
+  function handleCardDelete(id) {
+    fetch("/cards", {
+      method: 'DELETE',
+      headers: {
+        Accepts: 'application/json',
+        'Content-type': 'application/json',
+      }
+    }).then(() => setCards(cards.filter((card) => card.id !== id)));
+  }
+
   return (
     <BrowserRouter>
 
@@ -191,6 +201,7 @@ function App() {
               user={user} 
               onLogout={handleLogout}
               handleNewCardButton={handleNewCardButton}
+              handleCardDelete={handleCardDelete}
             />
             
             {/* <NavBar/>
