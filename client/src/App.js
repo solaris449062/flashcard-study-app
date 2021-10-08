@@ -58,22 +58,52 @@ function App() {
   }
 
   function handleSaveContent(id) {
-      fetch(`/cards/${id}`, {
-          method: 'PATCH',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(cardOnDisplay),
-          })
-          .then(response => response.json())
-          .then(updatedCard => {
-            console.log(updatedCard)
-            let unUpdatedCards = cards.filter(card => card.id !== id);
-            let updatedCards = [updatedCard, ...unUpdatedCards];
-            setCards(updatedCards)
-            // console.log(updatedCard)
-            // setCards(...updatedCard);
-      });
+    fetch(`/cards/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cardOnDisplay),
+        })
+        .then(response => response.json())
+        .then(updatedCard => {
+          console.log(updatedCard)
+          let unUpdatedCards = cards.filter(card => card.id !== id);
+          let updatedCards = [updatedCard, ...unUpdatedCards];
+          setCards(updatedCards)
+          // console.log(updatedCard)
+          // setCards(...updatedCard);
+    });
+  }
+
+  const newCardTemplate = {
+    title: "New Flashcard",
+    subject: "New subject",
+    content: "New content",
+    studied: false,
+    mastered: false,
+    user_id: null
+  }
+
+  function handleNewCardButton() {
+    console.log("new card button clicked")
+    console.log(user.id)
+    console.log({...newCardTemplate, user_id: user.id})
+    let newCardInformation = {...newCardTemplate, user_id: user.id}
+    fetch(`/cards/`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCardInformation),
+      })
+      .then(response => response.json())
+      .then(updatedCard => {
+        console.log(updatedCard)
+        setCards([updatedCard, ...cards])
+        // console.log(updatedCard)
+        // setCards(...updatedCard);
+    });
   }
 
   useEffect(() => {
@@ -160,6 +190,7 @@ function App() {
               handleContainerCardClick={handleContainerCardClick}
               user={user} 
               onLogout={handleLogout}
+              handleNewCardButton={handleNewCardButton}
             />
             
             {/* <NavBar/>
