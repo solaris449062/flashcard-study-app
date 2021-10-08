@@ -281,41 +281,46 @@ code {
 
 .card-title {
   text-align: center;
-  font-size: 10px;
+  font-size: 25px;
   margin-top: 10px;
+  margin-bottom: 0px;
   padding: 0;
 }
 
 .input-title {
   text-align: left;
-  font-size: 10px;
+  font-size: 110%;
   margin: 0;
   padding: 0;
   resize: none;
   border: 1px solid white;
   border-bottom: 1px solid grey;
   width: 90.5%;
-  height: 20px;
+  height: 30px;
   margin-top: 20px;
 }
 
 .card-subject {
-  font-size: 8px;
+  font-size: 15px;
+  margin-bottom: 0px;
 }
 
 .input-subject {
   text-align: left;
-  font-size: 10px;
+  font-size: 110%;
   resize: none;
   border: 1px solid white;
   border-bottom: 1px solid grey;
   width: 90%;
-  height: 20px;
+  height: 30px;
 }
 
 .card-content {
-  font-size: 6px;
-  margin-bottom: 15px;
+  font-size: 15px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
 }
 
 .card-studied {
@@ -327,7 +332,7 @@ code {
 }
 
 .input-content {
-  font-size: 80%;
+  font-size: 110%;
   width: 80%;
   height: 150px;
   text-align: left;
