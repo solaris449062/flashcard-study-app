@@ -9,6 +9,7 @@ import Login from "./components/Login"
 import NavBar from "./components/NavBar"
 import Quiz from "./components/Quiz"
 import Study from "./components/Study"
+import QuizOnDisplay from "./components/QuizOnDisplay";
 
 
 
@@ -41,6 +42,12 @@ function App() {
 
   function handleContainerCardClick(id) {
     setCardOnDisplay(cards.find(card => card.id === id))
+  }
+
+  function handleQuizContentChange(event) {
+    // console.log(event)
+    console.log(quizOnDisplay)
+    setQuizOnDisplay({...quizOnDisplay, content: event.target.value });
   }
 
   useEffect(() => {
@@ -153,7 +160,11 @@ function App() {
       // console.log(quizCardsOriginal[i])
       quizCardsNoContent[i].content = "Write down what you remember!";
     }
-    console.log(quizCardsNoContent)
+    setQuizCards(quizCardsNoContent)
+    setQuizOnDisplay(quizCardsNoContent[0])
+    console.log(quizCards)
+    console.log(quizOnDisplay)
+    console.log(quizOnDisplay.title)
 
   }
 
@@ -277,6 +288,8 @@ function App() {
               user={user} 
               onLogout={handleLogout}
               handleGenerateQuizButton={handleGenerateQuizButton}
+              quizCards={quizCards}
+              handleQuizContentChange={handleQuizContentChange}
             />
           </Route>
 
