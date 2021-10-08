@@ -44,10 +44,14 @@ function App() {
     setCardOnDisplay(cards.find(card => card.id === id))
   }
 
-  function handleQuizContentChange(event) {
+  function handleQuizContentChange(event, id) {
     // console.log(event)
     console.log(quizOnDisplay)
     setQuizOnDisplay({...quizOnDisplay, content: event.target.value });
+  }
+
+  function handleQuizCardClick(id) {
+    setQuizOnDisplay(quizCards.find(quiz => quiz.id === id))
   }
 
   useEffect(() => {
@@ -290,6 +294,8 @@ function App() {
               handleGenerateQuizButton={handleGenerateQuizButton}
               quizCards={quizCards}
               handleQuizContentChange={handleQuizContentChange}
+              quizOnDisplay={quizOnDisplay}
+              handleQuizCardClick={handleQuizCardClick}
             />
           </Route>
 
