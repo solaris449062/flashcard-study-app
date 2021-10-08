@@ -141,17 +141,19 @@ function App() {
       for (let i = 0; i < selectedIndexArray.length; i++) {
         selectedCards.push(cards[selectedIndexArray[i]])
       }
-      console.log(selectedCards)
+      // console.log(selectedCards)
       return selectedCards;
     }
     
     let quizCardsOriginal = selectQuizCards();
     // console.log(quizCardsOriginal[0].content)
-    let quizCardsNoContent = quizCardsOriginal.map(quizCard => {
-      quizCard.content = "Write down what you remember!"
-    })
-    // console.log(quizCardsNoContent)
-    return quizCardsNoContent;
+    let quizCardsNoContent = JSON.parse(JSON.stringify(quizCardsOriginal))
+
+    for (let i = 0; i < quizCardsOriginal.length; i++) {
+      // console.log(quizCardsOriginal[i])
+      quizCardsNoContent[i].content = "Write down what you remember!";
+    }
+    console.log(quizCardsNoContent)
 
   }
 
