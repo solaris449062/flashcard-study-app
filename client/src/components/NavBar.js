@@ -10,7 +10,7 @@ function NavBar() {
                 className="nav-link" 
                 style={{ textDecoration: 'none' }}
                 exact to="study">
-                Study
+                Flashcards
             </NavLink>
 
             <NavLink 

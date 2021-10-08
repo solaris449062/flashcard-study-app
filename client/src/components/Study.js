@@ -14,7 +14,7 @@ function Study({cardOnDisplay, handleSaveContent, handleTitleChange, handleSubje
             <NavBar/>
 
             <div className="study-heading-container">
-                <h1 className="study-heading">Flashcards</h1>
+                <h1 className="study-heading"></h1>
             </div>
 
             <NewCardButton handleNewCardButton={handleNewCardButton}/>

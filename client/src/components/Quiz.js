@@ -10,7 +10,7 @@ function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerat
             <Header user={user} onLogout={onLogout}/>
             <NavBar/>
             <div className="study-heading-container">
-                <h1 className="study-heading">Quiz Session</h1>
+                <h1 className="study-heading"></h1>
             </div>
 
             <GenerateQuizButton handleGenerateQuizButton={handleGenerateQuizButton}/>
