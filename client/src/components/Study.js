@@ -8,10 +8,12 @@ import Header from "./Header";
 function Study({cardOnDisplay, handleSaveContent, handleTitleChange, handleSubjectChange, handleContentChange, cards, handleContainerCardClick, user, onLogout}) {
     
     return (
-        <div>
+        <div className="study-container">
             <Header user={user} onLogout={onLogout}/>
             <NavBar/>
-            <h1>Study Session</h1>
+            <div className="study-heading-container">
+                <h1 className="study-heading">Flashcards</h1>
+            </div>
             {cardOnDisplay ? <CardDisplay 
                         id={cardOnDisplay.id}
                         title={cardOnDisplay.title}

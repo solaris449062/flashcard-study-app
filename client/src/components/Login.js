@@ -28,6 +28,19 @@ function Login({ onLogin, user, onLogout }) {
     return (
         <div className="login-container">
             <h1 className="login-logo">Flashspace</h1>
+            <div>
+            {user ? (
+                <div className="login-messages">
+                    <p className="welcome-message">Welcome, {user.username}!</p>
+                    {/* <button onClick={handleLogout}>Logout</button> */}
+                    <Link exact to='/study' className="enter-link">
+                        <button className="enter-button">Get to studying!</button>
+                    </Link>
+                </div>
+            ) : (
+            null
+            )}
+            </div>
             <form onSubmit={handleSubmit} className="label-input-container">
                 <h3 className="login-heading">Login</h3>
                 {/* <label htmlFor="username" className="input-labels">Username </label> */}
@@ -48,17 +61,6 @@ function Login({ onLogin, user, onLogout }) {
                 <button className="login-button" type="submit">Login</button>
                
             </form>
-            <div>
-            {user ? (
-                <div className="login-messages">
-                    <p className="welcome-message">Welcome, {user.username}!</p>
-                    {/* <button onClick={handleLogout}>Logout</button> */}
-                    <Link exact to='/study' className="enter-link">Get to studying!</Link>
-                </div>
-            ) : (
-            null
-            )}
-            </div>
         </div>
     );
   }
