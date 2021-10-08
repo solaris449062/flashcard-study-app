@@ -163,7 +163,7 @@ function App() {
 
     for (let i = 0; i < quizCardsOriginal.length; i++) {
       // console.log(quizCardsOriginal[i])
-      quizCardsNoContent[i].content = "Write down what you remember!";
+      quizCardsNoContent[i].content = "";
     }
     setQuizCards(quizCardsNoContent)
     setQuizOnDisplay(quizCardsNoContent[0])
