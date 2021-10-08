@@ -12,6 +12,42 @@ code {
     monospace;
 }
 
+/* Home */
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 650px;
+  flex-direction: column;
+  background-color: rgb(8, 116, 240);
+}
+
+.home-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.home-logo {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 75px;
+  color: white;
+}
+
+.home-button {
+  height: 40px;
+  width: 440px;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-bottom: 70px;
+}
+
 /* /login */
 
 .login-container {

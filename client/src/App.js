@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar"
 import Quiz from "./components/Quiz"
 import Study from "./components/Study"
 import QuizOnDisplay from "./components/QuizOnDisplay";
+import Home from "./components/Home"
 
 
 
@@ -250,7 +251,7 @@ function App() {
           </Route> */}
 
           <Route exact path="/">
-            <h1>Flashspace</h1>
+            <Home/>
           </Route>
 
           
