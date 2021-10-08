@@ -11,7 +11,7 @@ class CardsController < ApplicationController
     end
 
     def create
-        card = Card.create(card_params)
+        card = Card.create!(card_params)
         render json: card, status: :created
     end
 
@@ -32,7 +32,7 @@ class CardsController < ApplicationController
     private
 
     def card_params
-        params.permit(:title, :subject, :content, :studied, :mastered, :user, :id, :card)
+        params.permit(:title, :subject, :content, :studied, :mastered, :user, :id, :card, :user_id)
     end
 
 end
