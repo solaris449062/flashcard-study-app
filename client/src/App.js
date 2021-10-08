@@ -16,7 +16,9 @@ function App() {
   const [user, setUser] = useState(null);
   const [count, setCount] = useState(0);
   const [cards, setCards] = useState([]);
-  const [cardOnDisplay, setCardOnDisplay] = useState([])
+  const [cardOnDisplay, setCardOnDisplay] = useState([]);
+  const [quizCards, setQuizCards] = useState([]);
+  const [quizOnDisplay, setQuizOnDisplay] = useState([]);
   // const [cardID, setCardID] = useState(cardOnDisplay.id)
   // const [cardTitle, setTitle] = useState(cardOnDisplay.title)
   // const [cardSubject, setCardSubject] = useState(cardOnDisplay.subject)
@@ -104,6 +106,53 @@ function App() {
         // console.log(updatedCard)
         // setCards(...updatedCard);
     });
+  }
+
+  function handleGenerateQuizButton() {
+    
+    // console.log(cards)
+
+    function selectQuizCards() {
+      // console.log(cards)
+      let numTotalCards = cards.length
+      let numQuiz = Math.floor(numTotalCards/2)
+      
+      function pickRandomNumberNoOverlap(numTotal, numPicks) {
+        
+        let indexArray = [];
+        for (let i = 0; i < numTotal; i++) {
+          indexArray.push(i)
+        }
+  
+        let numDelete = numTotal - numPicks;
+        for (let i = 0; i < numDelete; i++ ) {
+          let indexToDelete = Math.floor(Math.random()*indexArray.length)
+          indexArray.splice(indexToDelete, 1)
+        }
+  
+        return indexArray;
+      }
+  
+      let selectedIndexArray = pickRandomNumberNoOverlap(numTotalCards, numQuiz);
+  
+      // console.log(selectedIndexArray)
+
+      let selectedCards = [];
+      for (let i = 0; i < selectedIndexArray.length; i++) {
+        selectedCards.push(cards[selectedIndexArray[i]])
+      }
+      console.log(selectedCards)
+      return selectedCards;
+    }
+    
+    let quizCardsOriginal = selectQuizCards();
+    // console.log(quizCardsOriginal[0].content)
+    let quizCardsNoContent = quizCardsOriginal.map(quizCard => {
+      quizCard.content = "Write down what you remember!"
+    })
+    // console.log(quizCardsNoContent)
+    return quizCardsNoContent;
+
   }
 
   useEffect(() => {
@@ -214,6 +263,7 @@ function App() {
             <Quiz
               user={user} 
               onLogout={handleLogout}
+              handleGenerateQuizButton={handleGenerateQuizButton}
             />
           </Route>
 
