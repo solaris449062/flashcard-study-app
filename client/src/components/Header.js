@@ -10,20 +10,22 @@ function Header({ user, onLogout }) {
   }
 
   return (
-    <header>
-      {/* {user ? (
-        <div>
-          <p>Welcome, {user.username}!</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        null
-      )} */}
-      <h1>Flashspace</h1>
-      <Link exact to='/login'>
-        <button onClick={handleLogout}>Logout</button>
-      </Link>
-    </header>
+    <div className="header">
+        <header className="header-container">
+        {/* {user ? (
+            <div>
+            <p>Welcome, {user.username}!</p>
+            <button onClick={handleLogout}>Logout</button>
+            </div>
+        ) : (
+            null
+        )} */}
+        <h1 className="header-logo">Flashspace</h1>
+        <Link exact to='/login'>
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
+        </Link>
+        </header>
+    </div>
   );
 }
 

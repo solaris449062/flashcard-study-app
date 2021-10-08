@@ -3,20 +3,24 @@ import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 
 function NavBar() {
     return (
-        <div>
-          <NavLink 
-            activeClassName="active-nav-link" 
-            className="study-route" 
-            exact to="study">
-            Study
-          </NavLink>
+        <div className="nav-container">
+            <div className="nav-bar">
+            <NavLink 
+                activeClassName="active-nav-link" 
+                className="nav-link" 
+                style={{ textDecoration: 'none' }}
+                exact to="study">
+                Study
+            </NavLink>
 
-          <NavLink 
-            activeClassName="active-nav-link" 
-            className="quiz-route"
-            exact to="quiz">
-            Quiz
-          </NavLink>
+            <NavLink 
+                activeClassName="active-nav-link" 
+                className="nav-link"
+                style={{ textDecoration: 'none' }}
+                exact to="quiz">
+                Quiz
+            </NavLink>
+            </div>
         </div>
     )
 }
