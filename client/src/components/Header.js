@@ -21,7 +21,7 @@ function Header({ user, onLogout }) {
             null
         )} */}
         <h1 className="header-logo">Flashspace</h1>
-        <Link exact to='/login'>
+        <Link exact to='/'>
             <button className="logout-button" onClick={handleLogout}>Logout</button>
         </Link>
         </header>
