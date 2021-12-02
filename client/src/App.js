@@ -46,7 +46,7 @@ function App() {
   }
 
   function handleQuizContentChange(event, id) {
-    // console.log(event)
+    console.log(event)
     console.log(quizOnDisplay)
     setQuizOnDisplay({...quizOnDisplay, content: event.target.value });
   }
