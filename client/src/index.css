@@ -194,6 +194,17 @@ code {
   justify-content: center;
 }
 
+.submit-button {
+  height: 40px;
+  width: 51%;
+  font-size: 18px;
+  background-color: rgb(8, 116, 240);
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
 .create-button {
   height: 50px;
   width: 61%;

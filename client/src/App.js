@@ -50,9 +50,11 @@ function App() {
     console.log(quizOnDisplay)
     setQuizOnDisplay({...quizOnDisplay, content: event.target.value });
   }
-
+  
   function handleQuizCardClick(id) {
+    console.log("clicked")
     setQuizOnDisplay(quizCards.find(quiz => quiz.id === id))
+    console.log(id)
   }
 
   useEffect(() => {
@@ -124,46 +126,46 @@ function App() {
     
     // console.log(cards)
 
-    function selectQuizCards() {
+    function selectQuizCards() { // select cards to be used as quizzes. This works by selecting and deleting cards randomly and taking the leftover cards.
       // console.log(cards)
-      let numTotalCards = cards.length
-      let numQuiz = Math.floor(numTotalCards/2)
+      let numTotalCards = cards.length // total number of avaialble cards
+      let numQuiz = Math.floor(numTotalCards/2) // number of cards to be used as quizzes, tentatively set as half the total cards, rounded down to a whole number.
       
-      function pickRandomNumberNoOverlap(numTotal, numPicks) {
+      function pickRandomNumberNoOverlap(numTotal, numPicks) { // pick random cards to be used as quizzes
         
-        let indexArray = [];
-        for (let i = 0; i < numTotal; i++) {
+        let indexArray = []; // initiate an auxiliary empty array 
+        for (let i = 0; i < numTotal; i++) { // populate array with indices corresponding to total number of cards
           indexArray.push(i)
         }
   
-        let numDelete = numTotal - numPicks;
-        for (let i = 0; i < numDelete; i++ ) {
-          let indexToDelete = Math.floor(Math.random()*indexArray.length)
-          indexArray.splice(indexToDelete, 1)
+        let numDelete = numTotal - numPicks; // calculate total number of cards to be deleted
+        for (let i = 0; i < numDelete; i++ ) { 
+          let indexToDelete = Math.floor(Math.random()*indexArray.length) // pick random index of the cards to be deleted
+          indexArray.splice(indexToDelete, 1) // delete the picked index above and take leftovers.
         }
   
-        return indexArray;
+        return indexArray; // return the leftover after all deletion
       }
   
-      let selectedIndexArray = pickRandomNumberNoOverlap(numTotalCards, numQuiz);
+      let selectedIndexArray = pickRandomNumberNoOverlap(numTotalCards, numQuiz); // take total number of flashcards and number of cards we want to use as quiz and return the array of randomly chosen indices to be used as quiz cards.
   
       // console.log(selectedIndexArray)
 
-      let selectedCards = [];
+      let selectedCards = []; // new array for selected cards based on the indices selected
       for (let i = 0; i < selectedIndexArray.length; i++) {
-        selectedCards.push(cards[selectedIndexArray[i]])
+        selectedCards.push(cards[selectedIndexArray[i]]) // push cards into the card array
       }
       // console.log(selectedCards)
-      return selectedCards;
+      return selectedCards; // return the array of selected cards.
     }
     
-    let quizCardsOriginal = selectQuizCards();
+    let quizCardsOriginal = selectQuizCards(); // original copy of the flashcards with all contents intact.
     // console.log(quizCardsOriginal[0].content)
-    let quizCardsNoContent = JSON.parse(JSON.stringify(quizCardsOriginal))
+    let quizCardsNoContent = JSON.parse(JSON.stringify(quizCardsOriginal)) // generate a deep clone of original cards to be displayed as quizzes, with the content hidden.
 
     for (let i = 0; i < quizCardsOriginal.length; i++) {
       // console.log(quizCardsOriginal[i])
-      quizCardsNoContent[i].content = "";
+      quizCardsNoContent[i].content = ""; // for the duplicate cards to be used as quizzes, hide(delete) the content.
     }
     setQuizCards(quizCardsNoContent)
     setQuizOnDisplay(quizCardsNoContent[0])
