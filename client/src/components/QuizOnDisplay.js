@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function QuizOnDisplay({id, title, subject, content, studied, mastered, handleQuizContentChange, handleQuizCardClick, handleQuizSubmit, quizSolution, isSubmitted, setIsSubmitted}) {
+function QuizOnDisplay({id, title, subject, content, studied, mastered, handleQuizContentChange, handleQuizCardClick, handleQuizSubmit, quizSolution, submissionState}) {
 
     const [quizContent, setQuizContent] = useState("");
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     return (
     <div className="card-display-container" onClick={() => handleQuizCardClick(id)}>

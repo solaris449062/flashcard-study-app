@@ -22,7 +22,8 @@ function App() {
   const [quizCards, setQuizCards] = useState([]);
   const [quizOnDisplay, setQuizOnDisplay] = useState([]);
   const [quizSolution, setQuizSolution] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionState, setSubmissionState] = useState(false)
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   // const [cardID, setCardID] = useState(cardOnDisplay.id)
   // const [cardTitle, setTitle] = useState(cardOnDisplay.title)
   // const [cardSubject, setCardSubject] = useState(cardOnDisplay.subject)
@@ -135,8 +136,6 @@ function App() {
 
   function handleGenerateQuizButton() {
     
-    // console.log(cards)
-    setIsSubmitted(false)
 
     function selectQuizCards() { // select cards to be used as quizzes. This works by selecting and deleting cards randomly and taking the leftover cards.
       // console.log(cards)
@@ -313,8 +312,7 @@ function App() {
               handleQuizCardClick={handleQuizCardClick}
               handleQuizSubmit={handleQuizSubmit}
               quizSolution={quizSolution}
-              isSubmitted={isSubmitted}
-              setIsSubmitted={setIsSubmitted}
+              submissionState={submissionState}
             />
           </Route>
 

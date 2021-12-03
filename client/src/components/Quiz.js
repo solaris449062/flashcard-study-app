@@ -4,7 +4,7 @@ import Header from "./Header";
 import GenerateQuizButton from "./GenerateQuizButton";
 import QuizOnDisplay from "./QuizOnDisplay";
 
-function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerateQuizButton, handleQuizCardClick, handleQuizContentChange, handleQuizSubmit, quizSolution, isSubmitted, setIsSubmitted}) {
+function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerateQuizButton, handleQuizCardClick, handleQuizContentChange, handleQuizSubmit, quizSolution, isSubmitted, submissionState}) {
     return (
         <div>
             <Header user={user} onLogout={onLogout}/>
@@ -26,8 +26,7 @@ function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerat
                         handleQuizContentChange={handleQuizContentChange} 
                         handleQuizSubmit={handleQuizSubmit}
                         quizSolution={quizSolution}
-                        isSubmitted={isSubmitted}
-                        setIsSubmitted={setIsSubmitted}
+                        submissionState={submissionState}
                     />
                 )}
             </div>
