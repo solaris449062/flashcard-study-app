@@ -4,7 +4,7 @@ import Header from "./Header";
 import GenerateQuizButton from "./GenerateQuizButton";
 import QuizOnDisplay from "./QuizOnDisplay";
 
-function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerateQuizButton, handleQuizCardClick, handleQuizContentChange}) {
+function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerateQuizButton, handleQuizCardClick, handleQuizContentChange, handleQuizSubmit, quizSolution, isSubmitted, setIsSubmitted}) {
     return (
         <div>
             <Header user={user} onLogout={onLogout}/>
@@ -16,7 +16,20 @@ function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerat
             <GenerateQuizButton handleGenerateQuizButton={handleGenerateQuizButton}/>
             {/* <QuizOnDisplay title={title} subject={subject} content={content} handleQuizContentChange={handleQuizContentChange}/> */}
             <div>
-                {quizCards.map(quiz => <QuizOnDisplay title={quiz.title} subject={quiz.subject} content={quiz.content} handleQuizCardClick={handleQuizCardClick} handleQuizContentChange={handleQuizContentChange}/>)}
+                {quizCards.map(quiz => 
+                    <QuizOnDisplay 
+                        title={quiz.title}
+                        id={quiz.id} 
+                        subject={quiz.subject} 
+                        content={quiz.content} 
+                        handleQuizCardClick={handleQuizCardClick} 
+                        handleQuizContentChange={handleQuizContentChange} 
+                        handleQuizSubmit={handleQuizSubmit}
+                        quizSolution={quizSolution}
+                        isSubmitted={isSubmitted}
+                        setIsSubmitted={setIsSubmitted}
+                    />
+                )}
             </div>
         </div>
     )

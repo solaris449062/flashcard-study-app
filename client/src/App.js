@@ -21,6 +21,8 @@ function App() {
   const [cardOnDisplay, setCardOnDisplay] = useState([]);
   const [quizCards, setQuizCards] = useState([]);
   const [quizOnDisplay, setQuizOnDisplay] = useState([]);
+  const [quizSolution, setQuizSolution] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   // const [cardID, setCardID] = useState(cardOnDisplay.id)
   // const [cardTitle, setTitle] = useState(cardOnDisplay.title)
   // const [cardSubject, setCardSubject] = useState(cardOnDisplay.subject)
@@ -45,6 +47,16 @@ function App() {
     setCardOnDisplay(cards.find(card => card.id === id))
   }
 
+  function handleQuizSubmit(id) {
+    console.log(id)
+    console.log(cards)
+    console.log(quizCards);
+    let card = (quizCards.find(card => card.id === id));
+    console.log(card);
+    setQuizSolution(card.content);
+    // console.log(card)
+  }
+
   function handleQuizContentChange(event, id) {
     console.log(event)
     console.log(quizOnDisplay)
@@ -52,7 +64,6 @@ function App() {
   }
   
   function handleQuizCardClick(id) {
-    console.log("clicked")
     setQuizOnDisplay(quizCards.find(quiz => quiz.id === id))
     console.log(id)
   }
@@ -125,6 +136,7 @@ function App() {
   function handleGenerateQuizButton() {
     
     // console.log(cards)
+    setIsSubmitted(false)
 
     function selectQuizCards() { // select cards to be used as quizzes. This works by selecting and deleting cards randomly and taking the leftover cards.
       // console.log(cards)
@@ -163,10 +175,10 @@ function App() {
     // console.log(quizCardsOriginal[0].content)
     let quizCardsNoContent = JSON.parse(JSON.stringify(quizCardsOriginal)) // generate a deep clone of original cards to be displayed as quizzes, with the content hidden.
 
-    for (let i = 0; i < quizCardsOriginal.length; i++) {
-      // console.log(quizCardsOriginal[i])
-      quizCardsNoContent[i].content = ""; // for the duplicate cards to be used as quizzes, hide(delete) the content.
-    }
+    // for (let i = 0; i < quizCardsOriginal.length; i++) {
+    //   // console.log(quizCardsOriginal[i])
+    //   quizCardsNoContent[i].content = ""; // for the duplicate cards to be used as quizzes, hide(delete) the content.
+    // }
     setQuizCards(quizCardsNoContent)
     setQuizOnDisplay(quizCardsNoContent[0])
     console.log(quizCards)
@@ -299,6 +311,10 @@ function App() {
               handleQuizContentChange={handleQuizContentChange}
               quizOnDisplay={quizOnDisplay}
               handleQuizCardClick={handleQuizCardClick}
+              handleQuizSubmit={handleQuizSubmit}
+              quizSolution={quizSolution}
+              isSubmitted={isSubmitted}
+              setIsSubmitted={setIsSubmitted}
             />
           </Route>
 

@@ -1,16 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function QuizOnDisplay({id, title, subject, content, studied, mastered, handleQuizContentChange, handleQuizCardClick, handleQuizSubmit}) {
+function QuizOnDisplay({id, title, subject, content, studied, mastered, handleQuizContentChange, handleQuizCardClick, handleQuizSubmit, quizSolution, isSubmitted, setIsSubmitted}) {
 
     const [quizContent, setQuizContent] = useState("");
-    const [quizSolution, setQuizSolution] = useState("");
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-    function handleQuizSubmit(id) {
-        setIsSubmitted(true);
-        setQuizSolution("solution");
-    }
 
     return (
     <div className="card-display-container" onClick={() => handleQuizCardClick(id)}>
@@ -20,8 +13,16 @@ function QuizOnDisplay({id, title, subject, content, studied, mastered, handleQu
             {/* <h3 className="card-studied">{`studied: ${studied}`}</h3>
             <h3 className="card-mastered">{`mastered: ${mastered}`}</h3> */}
             <textarea className="input-content" type="text" value={quizContent} onChange={event => setQuizContent(event.target.value)}/>
-            {isSubmitted ? null : <button className="submit-button" onClick={() => handleQuizSubmit(id)}>Show Answer</button>}
-            {isSubmitted ? <p className="input-content">{quizSolution}</p> : null} 
+            {isSubmitted ? null : 
+                <button className="submit-button" onClick={() => {
+                    console.log(title)
+                    console.log(id)
+                    handleQuizSubmit(id);
+                    setIsSubmitted(true);
+                }
+                }>Show Answer</button>
+            }
+            {isSubmitted ? <p className="input-content">{content ? content : null}</p> : null} 
        </div>
     </div>
     )
