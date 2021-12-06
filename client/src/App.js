@@ -48,15 +48,10 @@ function App() {
     setCardOnDisplay(cards.find(card => card.id === id))
   }
 
-  function handleQuizSubmit(id) {
-    console.log(id)
-    console.log(cards)
-    console.log(quizCards);
-    let card = (quizCards.find(card => card.id === id));
-    console.log(card);
-    setQuizSolution(card.content);
-    // console.log(card)
+  function handleQuizSubmit() {
+    setSubmissionState(true)
   }
+
 
   function handleQuizContentChange(event, id) {
     console.log(event)
@@ -136,6 +131,7 @@ function App() {
 
   function handleGenerateQuizButton() {
     
+    setSubmissionState(false)
 
     function selectQuizCards() { // select cards to be used as quizzes. This works by selecting and deleting cards randomly and taking the leftover cards.
       // console.log(cards)
