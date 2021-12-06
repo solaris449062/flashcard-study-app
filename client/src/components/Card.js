@@ -19,8 +19,11 @@ function Card({card, handleContainerCardClick, handleCardDelete}) {
             <h2 className="card-subject">{card.subject}</h2>
             <p className="card-content">{card.content}</p>
         </div>
-        {/* <h3 className="card-studied">{card.studied ? "studied": "not studied"}</h3>
-        <h3 className="card-mastered">{card.mastered ? "studied": "not mastered"}</h3> */}
+        <div className="card-checkbox">
+            <input type="checkbox" name="studied"/>
+            <label for="studied">studied</label>
+            <input type="checkbox" name="mastered"/>
+        </div>
     </div>
     )
 }
