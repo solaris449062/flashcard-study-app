@@ -20,9 +20,15 @@ function Card({card, handleContainerCardClick, handleCardDelete}) {
             <p className="card-content">{card.content}</p>
         </div>
         <div className="card-checkbox">
-            <input type="checkbox" name="studied"/>
-            <label for="studied">studied</label>
-            <input type="checkbox" name="mastered"/>
+            <div>
+                <input type="checkbox" name="studied"/>
+                <label for="studied">studied</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mastered"/>
+                <label for="studied">mastered</label>
+            </div>
+            
         </div>
     </div>
     )
