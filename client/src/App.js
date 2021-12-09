@@ -22,7 +22,8 @@ function App() {
   const [quizCards, setQuizCards] = useState([]);
   const [quizOnDisplay, setQuizOnDisplay] = useState([]);
   const [quizSolution, setQuizSolution] = useState("");
-  const [submissionState, setSubmissionState] = useState(false)
+  const [submissionState, setSubmissionState] = useState(false);
+  const [cardOnCheckboxClick, setCardOnCheckboxClick] = useState([]);
   // const [isSubmitted, setIsSubmitted] = useState(false);
   // const [cardID, setCardID] = useState(cardOnDisplay.id)
   // const [cardTitle, setTitle] = useState(cardOnDisplay.title)
@@ -47,6 +48,25 @@ function App() {
   function handleContainerCardClick(id) {
     setCardOnDisplay(cards.find(card => card.id === id))
   }
+
+  // function handleStudiedCheckboxClick(event, id) {
+  //   console.log(event.target.name)
+  //   console.log(cards)
+  //   let cardOnChange = cards.find(card => card.id === id);
+  //   cardOnChange = {...cardOnChange, studied: !cardOnChange.studied};
+  //   handleCheckboxClick(id);
+  //   console.log(cardOnChange);
+  //   console.log(`studied button with id ${id} is clicked!`)
+  //   // setStudiedCheckbox(!studiedState);
+
+  // }
+  
+  // function handleMasteredCheckboxClick(id) {
+  //   setMasteredCheckbox(!masteredState);
+
+  // }
+
+  
 
   function handleQuizSubmit() {
     setSubmissionState(true)
@@ -99,6 +119,32 @@ function App() {
     });
   }
 
+  function handleCheckboxClick(event, id) {
+    let cardOnChange = cards.find(card => card.id === id);
+    let updatedCheckboxCard;
+    if (event.target.name === "studied") {
+      updatedCheckboxCard = JSON.stringify({...cardOnChange, studied: !cardOnChange.studied})
+      } else if (event.target.name === "mastered") {
+      updatedCheckboxCard = JSON.stringify({...cardOnChange, mastered: !cardOnChange.mastered})
+    }
+    fetch(`/cards/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: updatedCheckboxCard
+        })
+        .then(response => response.json())
+        .then(updatedCard => {
+          console.log(updatedCard)
+          let unUpdatedCards = cards.filter(card => card.id !== id);
+          let updatedCards = [updatedCard, ...unUpdatedCards];
+          setCards(updatedCards)
+          // console.log(updatedCard)
+          // setCards(...updatedCard);
+    });
+  }
+
   const newCardTemplate = {
     title: "New Flashcard",
     subject: "New subject",
@@ -131,7 +177,7 @@ function App() {
 
   function handleGenerateQuizButton() {
     
-    setSubmissionState(false)
+    setSubmissionState(false);
 
     function selectQuizCards() { // select cards to be used as quizzes. This works by selecting and deleting cards randomly and taking the leftover cards.
       // console.log(cards)
@@ -278,6 +324,7 @@ function App() {
               onLogout={handleLogout}
               handleNewCardButton={handleNewCardButton}
               handleCardDelete={handleCardDelete}
+              handleCheckboxClick={handleCheckboxClick}
             />
             
             {/* <NavBar/>

@@ -6,7 +6,7 @@ import Header from "./Header";
 import NewCardButton from "./NewCardButton";
 
 
-function Study({cardOnDisplay, handleSaveContent, handleTitleChange, handleSubjectChange, handleContentChange, cards, handleContainerCardClick, user, onLogout, handleNewCardButton, handleCardDelete}) {
+function Study({cardOnDisplay, handleSaveContent, handleTitleChange, handleSubjectChange, handleContentChange, cards, handleContainerCardClick, user, onLogout, handleNewCardButton, handleCardDelete, handleCheckboxClick}) {
     
     return (
         <div className="study-container">
@@ -31,7 +31,12 @@ function Study({cardOnDisplay, handleSaveContent, handleTitleChange, handleSubje
                         handleSubjectChange={handleSubjectChange}
                         handleContentChange={handleContentChange}
                         /> : null}
-            {cards ? <CardContainer cards={cards} handleContainerCardClick={handleContainerCardClick} handleCardDelete={handleCardDelete}/> : null}
+            {cards ? <CardContainer 
+                        cards={cards} 
+                        handleContainerCardClick={handleContainerCardClick} 
+                        handleCardDelete={handleCardDelete}
+                        handleCheckboxClick={handleCheckboxClick}
+                    /> : null}
         </div>
     )
 }

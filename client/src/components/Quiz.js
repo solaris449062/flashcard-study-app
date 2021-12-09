@@ -30,15 +30,15 @@ function Quiz({quizCards, user, title, subject, content, onLogout, handleGenerat
                     />
                 )}
             </div>
-            <div> 
-            {(submissionState || quizCards.length === 0) ? null : 
-                <button className="submit-button" onClick={() => {
-                    console.log(title)
-                    console.log()
-                    handleQuizSubmit();
+            <div className="show-answer-button-container"> 
+                {(submissionState || quizCards.length === 0) ? null : 
+                    <button className="show-answer-button" onClick={() => {
+                        console.log(title)
+                        console.log()
+                        handleQuizSubmit();
+                    }
+                    }>Show Answers</button>
                 }
-                }>Show Answer</button>
-            }
             </div>
         </div>
     )
