@@ -250,7 +250,7 @@ function App() {
   }, [user])
 
   function handleCardDelete(id) {
-    fetch("/cards", {
+    fetch(`/cards/${id}`, {
       method: 'DELETE',
       headers: {
         Accepts: 'application/json',

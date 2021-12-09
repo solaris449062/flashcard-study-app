@@ -254,7 +254,7 @@ code {
   align-items: center;
   flex-direction: column;
   align-items: center;
-  height: 150px;
+  height: 80%;
 }
 
 .card-display-container {
@@ -339,9 +339,10 @@ code {
 .card-content {
   font-size: 15px;
   margin-bottom: 0px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
   text-align: center;
+  overflow: scroll;
 }
 
 .card-studied {
