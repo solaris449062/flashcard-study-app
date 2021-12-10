@@ -148,7 +148,6 @@ code {
   border-radius: 4px;
 }
 
-
 /* NavBar */
 
 .nav-container {
@@ -175,13 +174,12 @@ code {
   font-size: 20px;
 }
 
-
 /* /study */
 
 .study-heading-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 20px;
 
 }
 
@@ -388,6 +386,58 @@ code {
   margin-top: 2px;
   font-size: 60%;
   color: grey
+}
+
+/* quiz */
+
+.filter-button-contn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 19.5%;
+  margin-right: 19.5%;
+  justify-content: space-between;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  width: 100%;
+  
+}
+
+.filter-form {
+  width: 100%;
+}
+
+.filter-text {
+
+}
+
+.select-bar {
+  height: 40px;
+  width: 49%;
+}
+
+.quiz-button-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.quiz-button {
+  height: 60px;
+  width: 100%;
+  font-size: 18px;
+  background-color: rgb(8, 116, 240);
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 .show-answer-button {
