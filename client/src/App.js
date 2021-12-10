@@ -23,7 +23,7 @@ function App() {
   const [quizOnDisplay, setQuizOnDisplay] = useState([]);
   const [quizSolution, setQuizSolution] = useState("");
   const [submissionState, setSubmissionState] = useState(false);
-  const [cardOnCheckboxClick, setCardOnCheckboxClick] = useState([]);
+  const [quizContent, setQuizContent] = useState("");
   // const [isSubmitted, setIsSubmitted] = useState(false);
   // const [cardID, setCardID] = useState(cardOnDisplay.id)
   // const [cardTitle, setTitle] = useState(cardOnDisplay.title)
@@ -73,11 +73,7 @@ function App() {
   }
 
 
-  function handleQuizContentChange(event, id) {
-    console.log(event)
-    console.log(quizOnDisplay)
-    setQuizOnDisplay({...quizOnDisplay, content: event.target.value });
-  }
+
   
   function handleQuizCardClick(id) {
     setQuizOnDisplay(quizCards.find(quiz => quiz.id === id))
@@ -350,7 +346,7 @@ function App() {
               onLogout={handleLogout}
               handleGenerateQuizButton={handleGenerateQuizButton}
               quizCards={quizCards}
-              handleQuizContentChange={handleQuizContentChange}
+              // handleQuizContentChange={handleQuizContentChange}
               quizOnDisplay={quizOnDisplay}
               handleQuizCardClick={handleQuizCardClick}
               handleQuizSubmit={handleQuizSubmit}
